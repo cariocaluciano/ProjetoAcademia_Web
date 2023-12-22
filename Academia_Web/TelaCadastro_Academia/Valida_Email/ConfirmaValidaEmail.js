@@ -1,51 +1,55 @@
-function obterParametrosDaURL() {
+ function obterParametrosDaURL() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    // Obtenha o valor do parâmetro 'nome'
     const Token = urlParams.get('Token');
 
-    // Exiba o valor na página
+   
     if (Token) {
-        EnviaTokenParaApi(Token);
-
+      document.body.innerHTML += `<p>${Token}</p>`;
+        EnviaTokenParaApi(Token)
     } else {
         document.body.innerHTML += `<p>Bem-vindo!</p>`;
     }
 }
 
 function EnviaTokenParaApi(Token) {
-    return new Promise((resolve, reject) => {
-        const apiUrl = `https://localhost:7263/api/Adiciona/confirmartoken?Token=${Token}}`
 
-        fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Erro na requisição: ${response.status}`);
-                }
-                reject(response.json())
-            })
-            .then(data => {
-                var dataConvertidaParaString = JSON.stringify(data)
-                fnTrataRetornoApi(dataConvertidaParaString)
-                setTimeout(function () {
-                    window.location.href = "../TelaLogin_Academia/index.html";
-                }, 3000);
-                resolve(dataConvertidaParaString);
-            })
-            .catch(error => {
-                reject('Erro ao consumir a API:', error)
-            });
-    });
+      const apiUrl = `https://localhost:7263/api/Adiciona/confirmartoken`/*?Token=${Token}*/ 
+      var dados = {
+        token:Token
+      }
+      fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(dados)
+      })
+      
+          .then(response => {
+            console.log(response , 'response')
+              if (!response.ok) {
+                  throw new Error(`Erro na requisição: ${response.status}`);
+              }
+              return response.json();
+          })
+          .then(data => {
+              var dataConvertidaParaString = JSON.stringify(data)
+              fnTrataRetornoApi(dataConvertidaParaString)
+              setTimeout(function () {
+                 window.location.href = "http://127.0.0.1:5500/TelaLogin_Academia/index.html";
+              }, 3000);
+              return dataConvertidaParaString;
+          })
+          .catch(error => {
+            console.log('erro' , error)
+          });
 }
 
+
 function fnTrataRetornoApi(dataConvertidaParaString) {
-    if (dataConvertidaParaString.includes("Tabela Atualizada.")) {
+    if (dataConvertidaParaString.includes("Tabela")) {
       var paragrafoDoModal = document.getElementById('paragrafoModalCadAcademia')
       var modal = document.getElementById('modal');
       var modalCSS = document.querySelector('.modal-content')
