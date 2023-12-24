@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de login da academia</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -22,17 +22,20 @@
                <form id="Formulario_Login_Academia">
                   <div class="form-group">
                      <label>Email</label>
-                     <input type="text" class="form-control" placeholder="Digite seu E-mail">
+                     <input Id="Email" type="text" class="form-control" placeholder="Digite seu E-mail">
                   </div>
                   <div class="form-group">
                      <label>Senha</label>
-                     <input type="password" class="form-control" placeholder="Digite sua Senha">
+                     <input id="Senha" type="password" class="form-control" placeholder="Digite sua Senha">
                   </div>
-                  <button Id="Botao_Envia_Login_Academia" type="submit" class="btn btn-black">Login</button>
+                  <button Id="Botao_Envia_Login_Academia" type="submit" class="btn btn-black" onclick="FnEnviaLogin()">Login</button>
                   <a href="../TelaCadastro_Academia/index.html" class="btn btn-secondary">Register</a>
                </form>
+
+               <p id="RetornoDaApi"></p>
             </div>
          </div>
       </div>
+      <script src="./Login.Js"></script>
 </body>
 </html>
