@@ -2,8 +2,6 @@ const paragrafoDoCabecalhoQueRecebeIdAcademia = document.getElementById('NomeUsu
 const idAcademia = obterParametrosDaURL();
 
 
-
-
 function obterParametrosDaURL() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);

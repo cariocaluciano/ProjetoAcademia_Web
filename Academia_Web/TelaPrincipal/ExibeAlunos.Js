@@ -7,12 +7,6 @@ function fnExibeAlunos() {
 
     fnGetAlunos(idAcademia)
 
-
-
-
-
-
-
 }
 
 
