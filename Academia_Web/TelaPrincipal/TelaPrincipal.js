@@ -6,12 +6,12 @@ function obterParametrosDaURL() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    const IdAcademia = urlParams.get('Id');
+    const IdAcademia = urlParams.get('Tk');
     return IdAcademia;
 }
 
 function fnRetornaInformacoesDaAcademia() {
-    const apiUrl = `https://localhost:7263/api/DadosAcademia/GetAcademia?IdAcademia=${idAcademia}`
+    const apiUrl = `https://localhost:7263/api/DadosAcademia/GetAcademia?Token=${idAcademia}`
 
     fetch(apiUrl, {
         method: 'GET',

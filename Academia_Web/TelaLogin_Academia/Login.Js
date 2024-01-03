@@ -43,10 +43,10 @@ function FnEnviaLoginParaApi(email, senha) {
 
 function fnTrataRetornoApi(MensagemRetorno) {
     if (MensagemRetorno.includes('Sucesso')) {
-        const codigoAcademiaArray = MensagemRetorno.match(/\d+/g).map(Number);
-        const codigoAcademia = codigoAcademiaArray[0];
+        const retornoTratado = MensagemRetorno.split('Sucesso: ')
+        const token = retornoTratado[1].slice(0,-2)
         
-        window.location.href = `http://127.0.0.1:5500/TelaPrincipal/index.html?Id=${codigoAcademia}`;    
+        window.location.href = `http://127.0.0.1:5500/TelaPrincipal/index.html?Tk=${token}`;    
     }
 
     else if(MensagemRetorno.includes('Falha')){
