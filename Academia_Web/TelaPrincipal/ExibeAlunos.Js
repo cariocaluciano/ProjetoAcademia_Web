@@ -6,7 +6,7 @@ function fnExibeAlunos() {
 
     fnGetAlunos(idAcademia)
 
-}
+} 
 
 
 function fnGetAlunos(idAcademia) {

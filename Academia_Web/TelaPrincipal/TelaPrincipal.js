@@ -15,7 +15,7 @@ function fnRetornaInformacoesDaAcademia() {
 
     fetch(apiUrl, {
         method: 'GET',
-        headers: {
+        headers: { 
             'Content-Type': 'application/json'
         }
     })
