@@ -16,7 +16,7 @@ var HtmlCabecalho = `<nav class="navbar navbar-dark bg-dark fixed-top">
                 aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-        <p id="NomeUsuarioEIdAcademia"></p>
+        <p id="NomeUsuarioEIdAcademia"></p> 
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
