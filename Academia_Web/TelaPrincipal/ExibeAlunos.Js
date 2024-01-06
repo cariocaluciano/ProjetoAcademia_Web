@@ -36,7 +36,7 @@ function fnGetAlunos(idAcademia) {
 
     function fnInsereNoHtmlOsDadosDaAcademia(objetoJSON) {
 
-        var tabelaHtmlCabecalho = '<th>Nome</th><th>CPF</th><th>Email</th><th>Contato</th><th>ID</th><th class = "d-flex justify-content-center"><button  type="button" class="btn btn-success btn-sm d-inline-block" onclick="fnModalFormularioAdicionaAluno()">+</button></th>';
+        var tabelaHtmlCabecalho = '<th>Nome</th><th>CPF</th><th>Email</th><th>Contato</th><th>ID</th><th class = "d-flex justify-content-center"><button  type="button" class="btn btn-success btn-sm d-inline-block" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick = "fnClickInsereAluno()">+</button></th>';
         document.getElementById('ColunasDaTabelaDeDadosDosAlunos').innerHTML = tabelaHtmlCabecalho;
        
         var arrayDeObjetos = JSON.parse(objetoJSON.mensagem)
@@ -58,7 +58,7 @@ function fnGetAlunos(idAcademia) {
             <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
             </svg>
             </button>
-            <button  type="button" class="btn btn-primary btn-sm d-inline-block">
+            <button  type="button" class="btn btn-primary btn-sm d-inline-block" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick = "fnPegaOsDadosDoAlunoParaInserirNoModal(this)">
              UP
             </button>
             </div>
@@ -112,53 +112,137 @@ function fnDeletaAlunoDaApi(idAluno)
 
 }
 
-function fnModalFormularioAdicionaAluno(){
-    console.log('Clique')
-    document.innerHTML = `<div class="modal" id="formularioModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Formulário</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+function EnviaFormularioCadastroDeAluno(){
 
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="nome">Nome:</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
-                    </div>
-                    <div class="form-group">
-                        <label for="cpf">CPF:</label>
-                        <input type="text" class="form-control" id="cpf" placeholder="Digite seu CPF">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail:</label>
-                        <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
-                    </div>
-                    <div class="form-group">
-                        <label for="senha">Senha:</label>
-                        <input type="password" class="form-control" id="senha" placeholder="Digite sua senha">
-                    </div>
-                    <div class="form-group">
-                        <label for="contato">Contato:</label>
-                        <input type="text" class="form-control" id="contato"
-                            placeholder="Digite seu número de contato">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                </form>
-            </div>
+    const nomeCompleto = document.getElementById('NomeAluno').value;
+    const cpf = document.getElementById('CpfAluno').value;
+    const email = document.getElementById('EmailAluno').value;
+    const contato = document.getElementById('ContatoAluno').value;
+    const senha = document.getElementById('SenhaAluno').value;
+    var idAcademia = document.getElementById('NomeUsuarioEIdAcademia').textContent;
+    idAcademia = idAcademia.match(/\d+/g).map(Number);
+    idAcademia = idAcademia[0];
 
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            </div>
 
-        </div>
-    </div>
-</div>
-`
+    const apiUrl = `https://localhost:7263/api/academia/aluno/Adicionar`
+    const dados = {
+        idAcademia:idAcademia,
+        nomeCompleto:nomeCompleto,
+        cpf:cpf,
+        email:email,
+        contato:contato,
+        senha:senha
+    }
+
+    fetch(apiUrl, {
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(dados)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status}`);
+        }
+
+        return response.json();
+    })
+    .then(data => {
+        var dataConvertidaParaString = JSON.stringify(data)
+        fnTrataRetornoApi(dataConvertidaParaString,idAcademia);
+    })
+    .catch(error => {
+        console.error('Erro ao consumir a API:', error);
+    });
+
 }
+
+function fnClickInsereAluno(){
+    document.getElementById('PostAluno').style.display = "inline-block";
+    document.getElementById('PutAluno').style.display = "none";
+    document.getElementById('exampleModalLabel').innerText = "Cadastro de aluno";
+
+    document.getElementById('NomeAluno').value = '' ;
+    document.getElementById('CpfAluno').value = '' ;
+    document.getElementById('EmailAluno').value = '';
+    document.getElementById('ContatoAluno').value = '' ;
+
+}
+
+function fnPegaOsDadosDoAlunoParaInserirNoModal(dadosDoAluno){
+    
+    document.getElementById('NomeAluno').value = dadosDoAluno.parentNode.parentNode.parentNode.children[0].textContent ;
+    document.getElementById('CpfAluno').value = dadosDoAluno.parentNode.parentNode.parentNode.children[1].textContent ;
+    document.getElementById('EmailAluno').value = dadosDoAluno.parentNode.parentNode.parentNode.children[2].textContent ;
+    document.getElementById('ContatoAluno').value = dadosDoAluno.parentNode.parentNode.parentNode.children[3].textContent ;
+    document.getElementById('IdAluno').value = dadosDoAluno.parentNode.parentNode.parentNode.children[4].textContent ;   
+
+    document.getElementById('PostAluno').style.display = "none";
+    document.getElementById('PutAluno').style.display = "inline-block";
+    document.getElementById('exampleModalLabel').innerText = "Atualizar dados do aluno";
+
+}
+
+
+
+function fnAtualizaAluno(){
+    var idAcademia = document.getElementById('NomeUsuarioEIdAcademia').textContent;
+    idAcademia = idAcademia.match(/\d+/g).map(Number);
+    idAcademia = idAcademia[0];
+
+    const idAluno = document.getElementById('IdAluno').value
+    const nomeCompleto = document.getElementById('NomeAluno').value;
+    const cpf = document.getElementById('CpfAluno').value;
+    const email = document.getElementById('EmailAluno').value;
+    const contato = document.getElementById('ContatoAluno').value;
+    const senha = document.getElementById('SenhaAluno').value;
+
+    const apiUrl = `https://localhost:7263/api/academia/aluno/AtualizarDados`
+    const dados = {
+        idAluno:idAluno,
+        idAcademia:idAcademia,
+        nomeCompleto:nomeCompleto,
+        cpf:cpf,
+        email:email,
+        contato:contato,
+        senha:senha
+    }
+
+    fetch(apiUrl, {
+        method:'PUT',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(dados)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status}`);
+        }
+
+        return response.json();
+    })
+    .then(data => {
+        var dataConvertidaParaString = JSON.stringify(data)
+        fnTrataRetornoApi(dataConvertidaParaString,idAcademia);
+    })
+    .catch(error => {
+        console.error('Erro ao consumir a API:', error);
+    });
+
+}
+
+
+function fnTrataRetornoApi(retornoApi,idAcademia){
+if(retornoApi.includes('Sucesso')){
+document.getElementById('FecharModal').click();
+fnGetAlunos(idAcademia);
+}
+else{
+    console.log('Irei voltar para ajustar Adiciona Aluno Else')
+}
+
+}
+

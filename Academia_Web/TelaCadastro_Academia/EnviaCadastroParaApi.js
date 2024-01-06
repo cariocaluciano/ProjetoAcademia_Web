@@ -34,7 +34,6 @@ function fnEnviaCadastro() {
   })
 }
 
-
 function fnConsumirAPI(nomeAcademia, cnpjAcademia, nomeUsuario, cpfUsuario, nomeCompleto, email, contato, senha) {
   const apiUrl = 'https://localhost:7263/api/Adiciona/Academia';
   const dados = {
@@ -64,7 +63,6 @@ function fnConsumirAPI(nomeAcademia, cnpjAcademia, nomeUsuario, cpfUsuario, nome
     })
     .then(data => {
       var dataConvertidaParaString = JSON.stringify(data)
-      console.log(dataConvertidaParaString + 'CADASTRA NO BANCO')
       fnTrataRetornoApi(dataConvertidaParaString);
     })
     .catch(error => {
@@ -98,7 +96,7 @@ function fnTrataRetornoApi(dataConvertidaParaString) {
       }
     });
 
-    // setTimeout(function () {
+    // setTimeout(function () { //Luciano
     //   window.location.href = "../TelaLogin_Academia/index.html";
     // }, 3000);
 

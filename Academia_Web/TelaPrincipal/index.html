@@ -9,9 +9,68 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
 </head>
-<!-- style="margin: 0; overflow-y: hidden; overflow-x: hidden;" teste --> 
+<!-- style="margin: 0; overflow-y: hidden; overflow-x: hidden;" teste -->
 
 <body>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de aluno</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form id="cadastroForm">
+
+                            <div class="form-group">
+                                <label for="nomeAcademia">Nome completo:</label>
+                                <input type="text" class="form-control" id="NomeAluno"
+                                    placeholder="Digite o nome">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Cpf">CPF:</label>
+                                <input type="text" class="form-control" id="CpfAluno"
+                                    placeholder="Digite o CPF">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nomeUsuario">Email:</label>
+                                <input type="text" class="form-control" id="EmailAluno"
+                                    placeholder="Digite o Email">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="contato">Contato:</label>
+                                <input type="text" class="form-control" id="ContatoAluno" placeholder="Digite o contato">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="senha">Senha:</label>
+                                <input type="password" class="form-control" id="SenhaAluno" placeholder="Digite a senha">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="IdAluno">IdAluno:</label>
+                                <input type="text" class="form-control" id="IdAluno" disabled="true" >
+                            </div>
+
+                            <!-- Botão de Envio -->
+                            <!-- <button class="btn btn-primary" onclick="fnEnviaCadastro()">Enviar</button> -->
+                            <button id="FecharModal" type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Fechar</button>
+                            <button id="PostAluno" type="button" class="btn btn-primary mt-3" onclick="EnviaFormularioCadastroDeAluno()">Salvar</button>
+                            <button id="PutAluno" type="button" class="btn btn-primary mt-3" onclick="fnAtualizaAluno()" style="display: none;">Salvar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div>
         <div id="CabecalhoLateralDireitoComConfiguracoes">
         </div>

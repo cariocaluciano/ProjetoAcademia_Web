@@ -38,7 +38,7 @@ function EnviaTokenParaApi(Token) {
               var dataConvertidaParaString = JSON.stringify(data)
               fnTrataRetornoApi(dataConvertidaParaString)
               setTimeout(function () {
-                 window.location.href = "http://127.0.0.1:5500/TelaLogin_Academia/index.html";
+                 window.location.href = "http://127.0.0.1:5500/Academia_Web/TelaLogin_Academia/index.html";
               }, 3000);
               return dataConvertidaParaString;
           })
