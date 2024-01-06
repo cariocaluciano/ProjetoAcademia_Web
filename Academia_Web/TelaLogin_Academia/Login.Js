@@ -45,8 +45,7 @@ function fnTrataRetornoApi(MensagemRetorno) {
     if (MensagemRetorno.includes('Sucesso')) {
         const retornoTratado = MensagemRetorno.split('Sucesso: ')
         const token = retornoTratado[1].slice(0,-2)
-        
-        window.location.href = `http://127.0.0.1:5500/TelaPrincipal/index.html?Tk=${token}`;    
+        window.location.href = `http://127.0.0.1:5500/Academia_Web/TelaPrincipal/index.html?Tk=${token}`;    
     }
 
     else if(MensagemRetorno.includes('Falha')){
