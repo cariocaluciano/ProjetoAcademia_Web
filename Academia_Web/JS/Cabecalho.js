@@ -1,6 +1,7 @@
-const cabecalho = document.getElementById('CabecalhoLateralDireitoComConfiguracoes');
+const cabecalhoLateralDireito = document.getElementById('CabecalhoLateralDireitoComConfiguracoes');
+const cabecaLateralEsquerdo = document.getElementById('CabecalhoLateralEsquerdaComConfiguracoes')
 
-var HtmlCabecalho = `<nav class="navbar navbar-dark bg-dark fixed-top">
+var HtmlCabecalhoDireito = `<nav class="navbar navbar-dark bg-dark fixed-top">
 <div class="container-fluid">
     <a class="navbar-brand" href="#">Offcanvas dark navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -47,12 +48,16 @@ var HtmlCabecalho = `<nav class="navbar navbar-dark bg-dark fixed-top">
     </div>
 </div>
 </nav>
-
-
+`
+var HtmlCabecalhoEsquerdo = `
+<div class="ConteudoDaesquerda">
+<button type="button" class="btn btn-dark w-100">Dashboard</button>
+<button type="button" class="btn btn-dark w-100" onclick="fnExibeAlunos()">Alunos</button>
+</div>
 `
 
-
-cabecalho.innerHTML = HtmlCabecalho
+cabecalhoLateralDireito.innerHTML = HtmlCabecalhoDireito;
+cabecaLateralEsquerdo.innerHTML = HtmlCabecalhoEsquerdo;
 
 
 
