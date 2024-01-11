@@ -51,11 +51,11 @@ var HtmlCabecalhoDireito = `<nav class="navbar navbar-dark bg-dark fixed-top">
 `
 var HtmlCabecalhoEsquerdo = `
 <div class="ConteudoDaesquerda">
-<button type="button" class="btn btn-dark w-100">Dashboard</button>
-<button type="button" class="btn btn-dark w-100" onclick="fnExibeAlunos()">Alunos</button>
+<button id="btn-Dashboard" type="button" class="btn btn-dark w-100" onclick="fnRedirecionaParaTelaDeDashboard()">Dashboard</button>
+<button type="button" class="btn btn-dark w-100" onclick="fnRedirecionaParaTelaDeAlunos()">Alunos</button>
 </div>
 `
-
+//onclick="fnExibeAlunos()
 cabecalhoLateralDireito.innerHTML = HtmlCabecalhoDireito;
 cabecaLateralEsquerdo.innerHTML = HtmlCabecalhoEsquerdo;
 
