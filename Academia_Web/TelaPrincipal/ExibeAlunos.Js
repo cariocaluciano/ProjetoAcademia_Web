@@ -1,14 +1,10 @@
 function fnExibeAlunos() {
     const NomeUsuarioEIdAcademia = document.getElementById("NomeUsuarioEIdAcademia").textContent;
-    console.log(NomeUsuarioEIdAcademia)
     const id = NomeUsuarioEIdAcademia.match(/\d+/g).map(Number);
     const idAcademia = id[0];
-
-   
+  
     fnGetAlunos(idAcademia)
-
 } 
-//window.onload = fnExibeAlunos();
 
 
 function fnGetAlunos(idAcademia) {
@@ -229,6 +225,7 @@ function fnAtualizaAluno(){
     })
     .then(data => {
         var dataConvertidaParaString = JSON.stringify(data)
+        console.log(dataConvertidaParaString)
         fnTrataRetornoApi(dataConvertidaParaString,idAcademia);
     })
     .catch(error => {
@@ -248,6 +245,3 @@ else{
 }
 
 }
-
-
-
