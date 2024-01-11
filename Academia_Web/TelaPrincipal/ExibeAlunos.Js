@@ -165,6 +165,7 @@ function fnClickInsereAluno(){
     document.getElementById('PostAluno').style.display = "inline-block";
     document.getElementById('PutAluno').style.display = "none";
     document.getElementById('exampleModalLabel').innerText = "Cadastro de aluno";
+    document.getElementById('IdAluno').value = '';
 
     document.getElementById('NomeAluno').value = '' ;
     document.getElementById('CpfAluno').value = '' ;
