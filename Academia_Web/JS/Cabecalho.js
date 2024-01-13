@@ -55,7 +55,7 @@ var HtmlCabecalhoEsquerdo = `
 <button type="button" class="btn btn-dark w-100" onclick="fnRedirecionaParaTelaDeAlunos()">Alunos</button>
 </div>
 `
-//onclick="fnExibeAlunos()
+
 cabecalhoLateralDireito.innerHTML = HtmlCabecalhoDireito;
 cabecaLateralEsquerdo.innerHTML = HtmlCabecalhoEsquerdo;
 
