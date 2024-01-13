@@ -22,13 +22,14 @@ body {
 }
 
 .ConteudoDaesquerda {
+    overflow:hidden;
     height: 90%;
     width: 90%;
     border-style: solid;
     border-color: black;
     border-radius: 25px;
     background-color: white;
-    padding-top: 25px;
+  /*  padding-top: 25px;*/
     /* padding-left: 10px; */
 }
 .ConteudoDaesquerda button{

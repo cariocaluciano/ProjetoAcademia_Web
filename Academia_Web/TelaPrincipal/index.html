@@ -81,11 +81,37 @@
         </div>
         <div class="col-8 vh-100 ConteudoPrincipalCentral">
             <div class="ConteudoPrincipal" id="ExibicaoDeInformacoesAlunos">
-                <form class="d-flex mt-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-success" type="submit">Search</button>
+                <form id="Form-PesquisaAluno" class="d-flex mt-3" role="search">
+                    <input id="Input-Pesquisa" class="form-control me-2" type="search" placeholder="Faça sua busca" aria-label="Search">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Buscar por: 
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioNome" checked="true">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                              Nome
+                            </label>
+                          </div></li>
+                          <li><div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioEmail">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                              Email
+                            </label>
+                          </div></li>
+                          <li><div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioCpf">
+                            <label class="form-check-label" for="flexRadioDefault3">
+                              CPF
+                            </label>
+                          </div></li>
+                        </ul>
+                      </div>
+                    <button id="Btn-PesquisaAluno" class="btn btn-success ms-3" type="submit" onclick="BtnPesquisaAluno_Click()">Pesquisar</button>
                 </form>
-                <button onclick="fnExibeAlunos()" class="btn btn-primary mt-1">Exibir</button>
+                <p id="NomeAlunoVazioNaPesquisa" style="display: none;"></p>
+                <button id="btnExibeAlunos_Click" onclick="fnExibeAlunos()" class="btn btn-primary mt-1">Exibir</button>
                 <table class="TabelaDeAlunos mt-3" id="TabelaComOsDadosDosAlunos">
                     <thead class="theadDaTabelaDeAlunos">
                         <tr id="ColunasDaTabelaDeDadosDosAlunos">
