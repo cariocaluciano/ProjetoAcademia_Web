@@ -44,6 +44,8 @@ function fnRetornaInformacoesDaAcademia() {
 function fnInsereNoHtmlOsDadosDaAcademia(idAcademia,nome){
 
     paragrafoDoCabecalhoQueRecebeIdAcademia.innerText = `${nome} Id: ${idAcademia}` ;
+    const NomeDaAcademiaNoCabecalho = document.getElementById('NavbarPrincipal')
+    NomeDaAcademiaNoCabecalho.innerText = nome;
 }
 
 
