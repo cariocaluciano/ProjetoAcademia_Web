@@ -9,10 +9,31 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="../Css_TelaComum/style.css">
+    <link rel="stylesheet" href="../Css_TelaComum/loading.css">
 </head>
-<!-- style="margin: 0; overflow-y: hidden; overflow-x: hidden;" teste -->
 
 <body>
+   
+
+
+<!-- Modal LOGOF -->
+<div class="modal fade" id="ModalLogOf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="SairModalLabel">Sair do sistema</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Você deseja realmente sair do sistema ? 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-danger" onclick="fnLogOf()">Sair</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -119,9 +140,9 @@
                         </tr>
                     </thead>
                     <tbody id="CorpoDoCabecalho">
-
                     </tbody>
                 </table>
+                <div id="loadingIndicator" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             </div>
         </div>
         <div class="col-2 vh-100 EspacoVazio">

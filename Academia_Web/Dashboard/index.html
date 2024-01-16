@@ -13,7 +13,24 @@
 <!-- style="margin: 0; overflow-y: hidden; overflow-x: hidden;" teste -->
 
 <body>
-
+<!-- Modal LOGOF -->
+<div class="modal fade" id="ModalLogOf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Sair do sistema</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Você deseja realmente sair do sistema ? 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-danger" onclick="fnLogOf()">Sair</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -98,6 +115,8 @@
     <script src="../JS/TelaPrincipal.js"></script>
     <script src="./Dashoard.js"></script>
     <script src="../JS/RedirecionaParaAsTelas.js"></script>
+    <script src="../JS/LogOf.js"></script>
+
 </body>
 
 </html>
